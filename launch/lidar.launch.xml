@@ -1,0 +1,21 @@
+<?xml version='1.0' ?>
+<launch>
+  <node name="ydlidar_node"  pkg="ydlidar"  exec="ydlidar_node" output="both">
+    <param name="port" value="/dev/ttyUSB0"/>
+    <param name="frequency" value="8.0"/>
+    <param name="topic" value="scan"/>
+    <param name="frame_id" value="base_scan"/>
+    <param name="resolution_fixed" value="true"/>
+    <param name="auto_reconnect" value="true"/>
+    <param name="reversion" value="false"/>
+    <param name="sun_noise" value="true"/>
+    <param name="glass_noise" value="true"/>
+    <param name="angle_min" value="-180.0" />
+    <param name="angle_max" value="180.0" />
+    <param name="range_min" value="0.08" />
+    <param name="range_max" value="12.0" />
+    <param name="ignore_array" value="" />
+    <param name="max_abnormal_check_count" value="2"/>
+  </node>
+
+</launch>
