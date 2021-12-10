@@ -211,6 +211,16 @@ bool  CYdLidar::turnOn() {
   return true;
 }
 
+bool  CYdLidar::idleMotor() {
+  if (lidarPtr) {
+    lidarPtr->startMotor();
+  } else {
+    return false;
+  }
+
+  return true;
+}
+
 /*-------------------------------------------------------------
 						turnOff
 -------------------------------------------------------------*/
@@ -230,6 +240,15 @@ bool  CYdLidar::turnOff() {
   return true;
 }
 
+bool  CYdLidar::turnOffMotor() {
+  if (lidarPtr) {
+    lidarPtr->stopMotor();
+  } else {
+    return false;
+  }
+
+  return true;
+}
 
 /*-------------------------------------------------------------
             checkLidarAbnormal

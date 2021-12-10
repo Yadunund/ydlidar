@@ -12,6 +12,7 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(rclcpp_lifecycle REQUIRED)
 find_package(sensor_msgs REQUIRED)
 
 #add_subdirectory(sdk)
@@ -32,10 +33,17 @@ include_directories(
 )
 
 add_executable(ydlidar_node src/ydlidar_node.cpp  ${SDK_SRC})
+add_executable(ydlidar_lifecycle_node src/ydlidar_lifecycle_node.cpp ${SDK_SRC})
 add_executable(ydlidar_client src/ydlidar_client.cpp)
 
 ament_target_dependencies(ydlidar_node
    rclcpp
+   sensor_msgs
+)
+
+ament_target_dependencies(ydlidar_lifecycle_node
+   rclcpp
+   rclcpp_lifecycle
    sensor_msgs
 )
 
@@ -44,7 +52,7 @@ ament_target_dependencies(ydlidar_client
    sensor_msgs
 )
 
-install(TARGETS ydlidar_node ydlidar_client
+install(TARGETS ydlidar_node ydlidar_lifecycle_node ydlidar_client
   DESTINATION lib/${PROJECT_NAME}
 )
 

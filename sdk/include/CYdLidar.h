@@ -64,6 +64,11 @@ class YDLIDAR_API CYdLidar {
   //Turn off the motor enable and close the scan
   bool  turnOff(); //!< See base class docs
 
+  // Turn off just the motor
+  bool turnOffMotor();
+
+  bool idleMotor();
+
   //get fixed resolution node size
   int getFixedSize() const;
 
@@ -82,12 +87,14 @@ class YDLIDAR_API CYdLidar {
   //Turn off lidar connection
   void disconnecting(); //!< Closes the comms with the laser. Shouldn't have to be directly needed by the user
 
- protected:
   /** Returns true if communication has been established with the device. If it's not,
     *  try to create a comms channel.
     * \return false on error.
     */
   bool  checkCOMMs();
+
+ protected:
+
 
   /** Returns true if health status and device information has been obtained with the device. If it's not,
     * \return false on error.

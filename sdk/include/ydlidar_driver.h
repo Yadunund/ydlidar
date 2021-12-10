@@ -148,6 +148,8 @@ class YDlidarDriver {
     */
   result_t startMotor();
 
+  result_t idleMotor();
+
   /**
   * @brief 关闭电机 \n
     * @return 返回执行结果

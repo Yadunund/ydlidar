@@ -131,6 +131,21 @@ result_t YDlidarDriver::startMotor() {
   return RESULT_OK;
 }
 
+result_t YDlidarDriver::idleMotor() {
+  ScopedLocker l(_lock);
+
+  if (!m_isConnected) {
+    return RESULT_FAIL;
+  }
+
+  if (_serial) {
+    _serial->flush();
+    _serial->setDTR(1);
+  }
+
+  return RESULT_OK;
+}
+
 result_t YDlidarDriver::stopMotor() {
   ScopedLocker l(_lock);
 
